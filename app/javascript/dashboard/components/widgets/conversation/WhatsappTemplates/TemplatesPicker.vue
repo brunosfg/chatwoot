@@ -73,6 +73,9 @@ export default {
       // TODO: Remove the last filter when we support all formats
       return this.$store.getters['inboxes/getWhatsAppTemplates'](this.inboxId)
         .filter(template => template.status.toLowerCase() === 'approved')
+        .filter(template => !template.name.toLowerCase().includes('sample'))
+        .filter(template => template.name.toLowerCase().includes('welcome'))
+        .filter(template => template.name.toLowerCase().includes('hello_world'))
         .filter(template => {
           return template.components.every(component => {
             return !formatsToRemove.includes(component.format);
