@@ -254,7 +254,7 @@ export default {
   },
   data() {
     return {
-      activeAssigneeTab: wootConstants.ASSIGNEE_TYPE.ME,
+      activeAssigneeTab: wootConstants.ASSIGNEE_TYPE.ALL,
       activeStatus: wootConstants.STATUS_TYPE.OPEN,
       activeSortBy: wootConstants.SORT_BY_TYPE.LATEST,
       showAdvancedFilters: false,
