@@ -469,7 +469,7 @@ export default {
       );
     },
     isSignatureEnabledForInbox() {
-      return !this.isPrivate && this.isAnEmailChannel && this.sendWithSignature;
+      return !this.isPrivate && this.isAnEmailChannel && this.sendWithSignature || this.isAWhatsAppChannel;
     },
     isSignatureAvailable() {
       return !!this.messageSignature;
@@ -719,7 +719,7 @@ export default {
       if (!this.showMentions) {
         let newMessage = this.message;
         if (this.isSignatureEnabledForInbox && this.messageSignature) {
-          newMessage += '\n\n' + this.messageSignature;
+          newMessage += '\n' + '[' + this.messageSignature + ']';
         }
 
         const isOnWhatsApp =
