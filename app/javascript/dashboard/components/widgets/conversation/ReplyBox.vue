@@ -479,7 +479,7 @@ export default {
       return !!this.signatureToApply;
     },
     sendWithSignature() {
-      return this.fetchSignatureFlagFromUiSettings(this.channelType);
+      return this.fetchSignatureFlagFromUiSettings(this.channelType) && !this.isAWhatsAppChannel;
     },
     editorMessageKey() {
       const { editor_message_key: isEnabled } = this.uiSettings;
@@ -812,7 +812,9 @@ export default {
           this.isAWhatsAppCloudChannel ||
           this.is360DialogWhatsAppChannel;
         if (isOnWhatsApp && !this.isPrivate) {
-          this.sendMessageAsMultipleMessages(this.message);
+          // Append Signature for WhatsApp message
+          const modifiedMessage = '*' + this.messageSignature + ':' + '*' + '\n' + this.message;
+          this.sendMessageAsMultipleMessages(modifiedMessage);
         } else {
           const messagePayload = this.getMessagePayload(this.message);
           this.sendMessage(messagePayload);
