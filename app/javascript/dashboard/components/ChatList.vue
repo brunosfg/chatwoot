@@ -82,7 +82,7 @@ const conversationDynamicScroller = ref(null);
 
 const activeAssigneeTab = ref(wootConstants.ASSIGNEE_TYPE.ALL);
 const activeStatus = ref(wootConstants.STATUS_TYPE.OPEN);
-const activeSortBy = ref(wootConstants.SORT_BY_TYPE.WAITING_SINCE_DESC);
+const activeSortBy = ref(wootConstants.SORT_BY_TYPE.WAITING_SINCE_ASC);
 const showAdvancedFilters = ref(false);
 // chatsOnView is to store the chats that are currently visible on the screen,
 // which mirrors the conversationList.
@@ -351,7 +351,7 @@ function setFiltersFromUISettings() {
   activeSortBy.value =
     Object.keys(wootConstants.SORT_BY_TYPE).find(
       sortField => sortField === orderBy
-    ) || wootConstants.SORT_BY_TYPE.WAITING_SINCE_DESC;
+    ) || wootConstants.SORT_BY_TYPE.WAITING_SINCE_ASC;
 }
 
 function emitConversationLoaded() {
